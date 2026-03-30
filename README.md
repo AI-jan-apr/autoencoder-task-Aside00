@@ -1,35 +1,81 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/jYmqdKSO)
-# 📌 Autoencoder with MNIST Dataset
+# 🔍 Digit Similarity Finder (Autoencoder Project)
 
-This project demonstrates how to build, train, and use an **autoencoder** for the **MNIST handwritten digit dataset**. It includes visualization of digits, dimensionality reduction, and an image retrieval based on **cosine similarity**.
+An intelligent deep learning project that uses an **Autoencoder Neural Network** to find visually similar handwritten digits from the MNIST dataset.
 
 ---
 
 ## 🚀 Project Overview
 
-1. **Data Loading**:
+This project demonstrates how a trained autoencoder can learn compact representations (latent space) of images and use them for **image similarity search**.
 
-   * The MNIST dataset (`mnist_784`) is fetched using `fetch_openml`.
-   * It contains 70,000 grayscale images of handwritten digits (0–9).
-   * Each image is represented as a **28×28** pixel grid (flattened to 784 features).
+Instead of classifying digits, the model learns to **understand visual structure** and retrieve similar handwritten digits.
 
-2. **Autoencoder Architecture**:
+---
 
-   * **Encoder**: Compresses 784-dimensional input into an n-dimensional latent representation.
-   * **Decoder**: Reconstructs the original 784-dimensional image from the latent space.
-   * **Loss Function**
-   * **Optimizer**
+## 🧠 How It Works
 
-3. **Training**:
+1. A trained **encoder model** compresses images into a lower-dimensional representation.
+2. Uploaded images are processed and encoded.
+3. The system compares the encoded vector with MNIST dataset encodings.
+4. It retrieves the **Top 5 most similar digits** using cosine similarity.
 
-   * The autoencoder is trained to reconstruct the input images.
+---
 
-4. **Dimensionality Reduction & Visualization**:
+## 🎯 Key Features
 
-   * Encoded representations of test images are further reduced to 2D.
+- 📤 Upload handwritten digit images
+- 🔍 Find visually similar digits from MNIST dataset
+- 🧠 Deep Autoencoder-based feature extraction
+- 📊 t-SNE visualization (optional in notebook version)
+- ⚡ Fast similarity search using cosine similarity
+- 🎨 Clean Streamlit web interface
 
-5. **Image Retrieval**:
+---
 
-   * A sample image is encoded into the latent space using the encoder only.
-   * Cosine similarity is used to compare it against the training set.
-   * The top-5 most similar images are retrieved and displayed.
+## 🧪 My Experiment
+
+As part of testing the model:
+
+- I uploaded a **printed digit "5"**
+- The model successfully processed it and understood its structure
+- It then retrieved and matched it with **handwritten "5" digits**
+- The system correctly identified and returned similar handwritten versions of the digit
+
+<img width="1900" height="957" alt="image" src="https://github.com/user-attachments/assets/592f2d02-2683-44a2-aedb-eb35fbb0b96f" />
+
+
+👉 This shows that the model does not rely on exact pixel matching, but instead understands the **underlying shape and pattern of digits**.
+
+---
+
+## 🛠️ Tech Stack
+
+- Python 🐍
+- TensorFlow / Keras
+- NumPy
+- Scikit-learn
+- Streamlit
+- Matplotlib
+- MNIST Dataset
+
+---
+
+## 📁 Project Structure
+autoencoder-task/
+│
+├── app.py # Streamlit web app
+├── model/
+│ ├── encoder.h5 # Trained encoder model
+│ └── autoencoder.h5 # Full autoencoder model
+│
+└── README.md
+
+
+
+---
+
+## ▶️ How to Run
+
+```bash
+pip install streamlit tensorflow numpy scikit-learn pillow
+streamlit run app.py
